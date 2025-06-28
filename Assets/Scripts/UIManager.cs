@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     // 提供对外的实例
     private static UIManager _instance;
 
+
     public static UIManager Instance
     {
         get
@@ -21,6 +22,8 @@ public class UIManager : MonoBehaviour
                 {
                     GameObject go = new GameObject("UIManager");
                     _instance = go.AddComponent<UIManager>();
+                    // 切换场景不销毁实例
+                    DontDestroyOnLoad(go);
                 }
             }
 
