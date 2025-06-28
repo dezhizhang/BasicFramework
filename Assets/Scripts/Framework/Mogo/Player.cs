@@ -24,13 +24,19 @@ public class Player
 
     public void PrintUpdate()
     {
-        MonoManager.Instance.AddUpdateListener(() => { Debug.Log("PrintUpdate"); });
+        MonoManager.Instance.AddUpdateListener(DebugUpdate);
+    }
+
+
+    private void DebugUpdate()
+    {
+        Debug.Log("DebugUpdate");
     }
 
 
     public void StopPrintUpdate()
     {
-        MonoManager.Instance.RemoveUpdateListener(() => { Debug.Log("StopPrintUpdate"); });
+        MonoManager.Instance.RemoveUpdateListener(DebugUpdate);
     }
 
     public void StopAllPrintUpdate()
