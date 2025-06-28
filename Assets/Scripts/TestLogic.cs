@@ -8,7 +8,9 @@ public class TestLogic : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log(PlayerModel.Instance.money);   
+            UIManager.Instance.Show();
+            
+            // Debug.Log(UIManager.Instance.Show);   
         }
 
         
