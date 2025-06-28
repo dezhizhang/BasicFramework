@@ -1,16 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 /// <summary>
 /// mono管理器
 /// </summary>
 public class MonoManager : SingletonPatternBase<MonoManager>
 {
-    // 构造方法私有化，访止外部进行实例化
-    private MonoManager()
-    {
-    }
-
     private MonoController _monoController;
 
     public MonoController MonoController
@@ -28,15 +24,63 @@ public class MonoManager : SingletonPatternBase<MonoManager>
             return _monoController;
         }
     }
-    
+
     /// <summary>
     ///  让外部开鹿协程
     /// </summary>
     /// <param name="routine"></param>
     /// <returns></returns>
-    
     public Coroutine StartCoroutine(IEnumerator routine)
     {
-        return _monoController.StartCoroutine(routine);
+        return MonoController.StartCoroutine(routine);
+    }
+
+    /// <summary>
+    /// 停止协程
+    /// </summary>
+    /// <param name="routine"></param>
+    public void StopCoroutine(IEnumerator routine)
+    {
+        MonoController.StopCoroutine(routine);
+    }
+
+    public void StopCoroutine(Coroutine routine)
+    {
+        MonoController.StopCoroutine(routine);
+    }
+
+
+    /// <summary>
+    /// 停止所有协程方法
+    /// </summary>
+    public void StopAllCoroutines()
+    {
+        MonoController.StopAllCoroutines();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="call"></param>
+    public void AddUpdateListener(UnityAction call)
+    {
+        MonoController.AddUpdateListener(call);
+    }
+
+    /// <summary>
+    /// 移除监听事件
+    /// </summary>
+    /// <param name="call"></param>
+    public void RemoveUpdateListener(UnityAction call)
+    {
+        MonoController.RemoveUpdateListener(call);
+    }
+
+    /// <summary>
+    /// 移除所有听事件
+    /// </summary>
+    public void RemoveAllListeners()
+    {
+        MonoController.RemoveAllListeners();
     }
 }

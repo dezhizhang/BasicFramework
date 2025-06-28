@@ -24,7 +24,6 @@ public class SingletonPatternBase<T> where T : SingletonPatternBase<T>
             {
                 lock (_lock)
                 {
-                    // 使用反射调用无参构造方法创建对像
                     _instance = Activator.CreateInstance(typeof(T)) as T;
                 }
             }
