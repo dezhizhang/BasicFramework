@@ -6,8 +6,7 @@ public class Player
 {
     public void Show()
     {
-        GameObject go = GameObject.Find("MonoController");
-        go.AddComponent<MonController>().StartCoroutine(MyCoroutine());
+        MonoManager.Instance.StartCoroutine(MyCoroutine());
     }
 
     IEnumerator MyCoroutine()
