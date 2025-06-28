@@ -83,4 +83,30 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     {
         MonoController.RemoveAllListeners();
     }
+
+    /// <summary>
+    ///  添加fixUpdateListener
+    /// </summary>
+    /// <param name="call"></param>
+    public void AddFixedUpdateListener(UnityAction call)
+    {
+        MonoController.AddFixedUpdateListener(call);
+    }
+
+    /// <summary>
+    /// 移除fixUpdateListener
+    /// </summary>
+    /// <param name="call"></param>
+    public void RemoveFixedUpdateListener(UnityAction call)
+    {
+        MonoController.RemoveFixedUpdateListener(call);
+    }
+
+    /// <summary>
+    ///  RemoveFixUpdate移除所有的添加事件
+    /// </summary>
+    public void RemoveFixUpdateAllListeners()
+    {
+        MonoController.RemoveFixUpdateAllListeners();
+    }
 }
