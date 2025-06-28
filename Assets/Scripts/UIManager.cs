@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     {
     }
 
+    // 提供对外的实例
     private static UIManager _instance;
 
     public static UIManager Instance
@@ -16,6 +17,11 @@ public class UIManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = FindAnyObjectByType<UIManager>();
+                if (_instance == null)
+                {
+                    GameObject go = new GameObject("UIManager");
+                    _instance = go.AddComponent<UIManager>();
+                }
             }
 
             return _instance;
@@ -24,6 +30,6 @@ public class UIManager : MonoBehaviour
 
     public void Show()
     {
-        Debug.Log("test:" + _instance);
+        Debug.Log("Show" + _instance);
     }
 }
