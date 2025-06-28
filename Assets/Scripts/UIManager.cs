@@ -11,4 +11,10 @@ public class UIManager : SingletonPatternMonoAutoDontBase<UIManager>
     {
         Debug.Log("UIManager:Show");
     }
+
+    // 子类重写
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
 }

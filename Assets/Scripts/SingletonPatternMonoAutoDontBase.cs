@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -10,6 +11,9 @@ public class SingletonPatternMonoAutoDontBase<T> : MonoBehaviour where T : Singl
     protected SingletonPatternMonoAutoDontBase()
     {
     }
+
+    // 记录单例对像是否存在，用于防止在OnDestroy方法中访问单例对像
+    public static bool isExisted { get; private set; } = false;
 
     // 提供一个属性给外部访问，这个属性相当于是单例对像
     private static T _instance;
@@ -29,10 +33,17 @@ public class SingletonPatternMonoAutoDontBase<T> : MonoBehaviour where T : Singl
                     _instance = obj.AddComponent<T>();
                     // 游戏对像在切换场影 时不销毁
                     DontDestroyOnLoad(obj);
+                    isExisted = true;
                 }
             }
 
             return _instance;
         }
+    }
+
+    // 子类重写该方法
+    protected virtual void OnDestroy()
+    {
+        isExisted = false;
     }
 }

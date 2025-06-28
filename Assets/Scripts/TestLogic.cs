@@ -15,4 +15,12 @@ public class TestLogic : MonoBehaviour
             SceneManager.LoadScene("Scenes/Singleton2");
         }
     }
+
+    private void OnDestroy()
+    {
+        if (UIManager.isExisted)
+        {
+            UIManager.Instance.Show();
+        }
+    }
 }
