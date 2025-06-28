@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UIManager : SingletonPatternMonoAutoBase<UIManager>
+public class UIManager : SingletonPatternMonoAutoDontBase<UIManager>
 {
     // 构造方法私有化防方外部访问
     private UIManager()

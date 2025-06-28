@@ -9,5 +9,10 @@ public class TestLogic : MonoBehaviour
         {
             UIManager.Instance.Show();
         }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            SceneManager.LoadScene("Scenes/Singleton2");
+        }
     }
 }
