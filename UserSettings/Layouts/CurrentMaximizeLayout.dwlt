@@ -766,9 +766,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Target: {x: -0.25508675, y: 0.051311724, z: -0.013557202, w: -0.9654606}
     speed: 2
-    m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Value: {x: -0.25508675, y: 0.051311724, z: -0.013557202, w: -0.9654606}
   m_Size:
     m_Target: 9.843565
     speed: 2
@@ -934,9 +934,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 84b8feff
-      m_LastClickedID: -83836
-      m_ExpandedIDs: 16c8feffb644ffff7856ffff1857ffffb657ffffda65ffff7066ffff446bffffe66bffff7e6cffff1c6dffff1072ffffbe72ffff9c75ffff3a76ffffd876ffff7677ffff1478ffff2e79ffff427bffffda7bffff7c80ffff1c85ffffcee7fffff4ffffff
+      m_SelectedIDs: eeab0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 84deffff1cdfffff1cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1033,8 +1033,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Scripts/Framework/Mogo
+    m_Folders: []
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1052,7 +1051,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b0230000
     m_LastClickedID: 9136
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 000000002aa500002ca500002ea5000030a5000032a50000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1079,9 +1078,9 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 84b8feff
-    m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000000eaa00003caa0000d8aa000078bc000080bc0000
+    m_SelectedIDs: eeab0000
+    m_LastClickedID: 44014
+    m_ExpandedIDs: ffffffff000000002aa500002ca500002ea5000030a500001ca80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1107,8 +1106,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 84b8feff
-    m_LastClickedInstanceID: -83836
+    m_SelectedInstanceIDs: eeab0000
+    m_LastClickedInstanceID: 44014
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:

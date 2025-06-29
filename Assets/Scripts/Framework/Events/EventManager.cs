@@ -14,10 +14,11 @@ public class EventManager : SingletonPatternBase<EventManager>
     /// <summary>
     /// 添加监听事件
     /// </summary>
-    /// <param name="eventName"></param>
+    /// <param name="command"></param>
     /// <param name="listener"></param>
-    public void AddEventListener(string eventName, UnityAction listener)
+    public void AddEventListener(object command, UnityAction listener)
     {
+        string eventName = command.GetType().Name;
         if (!events.ContainsKey(eventName))
         {
             events.Add(eventName, listener);
