@@ -51,4 +51,17 @@ public class EventManager : SingletonPatternBase<EventManager>
             events[eventName] -= listener;
         }
     }
+
+
+    /// <summary>
+    /// 移除命令中的所有事件
+    /// </summary>
+    /// <param name="eventName"></param>
+    public void RemoveEventListeners(string eventName)
+    {
+        if (events.ContainsKey(eventName))
+        {
+            events[eventName] = null;
+        }
+    }
 }
