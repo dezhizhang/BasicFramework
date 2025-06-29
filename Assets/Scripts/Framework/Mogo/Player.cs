@@ -24,7 +24,7 @@ public class Player
 
     public void PrintUpdate()
     {
-        MonoManager.Instance.AddUpdateListener(DebugUpdate);
+        MonoManager.Instance.AddFixedUpdateListener(DebugUpdate);
     }
 
 
@@ -36,12 +36,12 @@ public class Player
 
     public void StopPrintUpdate()
     {
-        MonoManager.Instance.RemoveUpdateListener(DebugUpdate);
+        MonoManager.Instance.RemoveFixedUpdateListener(DebugUpdate);
     }
 
     public void StopAllPrintUpdate()
     {
-        MonoManager.Instance.RemoveAllListeners();
+        MonoManager.Instance.RemoveFixUpdateAllListeners();
     }
 
     IEnumerator MyCoroutine()
