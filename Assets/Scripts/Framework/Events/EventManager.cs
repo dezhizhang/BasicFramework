@@ -38,4 +38,17 @@ public class EventManager : SingletonPatternBase<EventManager>
             events[eventName]?.Invoke();
         }
     }
+
+    /// <summary>
+    /// 移除事件
+    /// </summary>
+    /// <param name="eventName"></param>
+    /// <param name="listener"></param>
+    public void RemoveEventListener(string eventName, UnityAction listener)
+    {
+        if (events.ContainsKey(eventName))
+        {
+            events[eventName] -= listener;
+        }
+    }
 }

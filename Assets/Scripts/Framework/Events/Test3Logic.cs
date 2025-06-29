@@ -7,6 +7,8 @@ public class Test3Logic : MonoBehaviour
     {
         if (GUI.Button(new Rect(10, 20, 100, 20), "发送命令"))
         {
+            EventManager.Instance.DispatchEvent("Write");
+
             // GameObject go = GameObject.Find("Cube");
             // go.GetComponent<CubeLogic>().Write();
             //
@@ -15,9 +17,6 @@ public class Test3Logic : MonoBehaviour
             //
             // GameObject go3 = GameObject.Find("Capsule");
             // go3.GetComponent<CapsuleLogic>().Draw();
-            
-            
-            
         }
     }
 }
