@@ -7,6 +7,8 @@ public class TestLogic2 : MonoBehaviour
     private void Awake()
     {
         _player = new Player();
+       
+        // MonoManager.Instance.StopAllCoroutines();
     }
 
 

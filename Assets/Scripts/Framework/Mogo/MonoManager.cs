@@ -7,23 +7,133 @@ using UnityEngine.Events;
 /// </summary>
 public class MonoManager : SingletonPatternBase<MonoManager>
 {
-    private MonoController _monoController;
-
-    public MonoController MonoController
+    private MonoController _monoExecutor;
+    
+    
+    private MonoController MonoExecutor
     {
         get
         {
-            if (_monoController == null)
+            if (_monoExecutor == null)
             {
                 // 相当于MonoController
                 GameObject go = new GameObject(typeof(MonoController).Name);
                 // 组件添加到实例对像中
-                _monoController = go.AddComponent<MonoController>();
+                _monoExecutor = go.AddComponent<MonoController>();
             }
 
-            return _monoController;
+            return _monoExecutor;
         }
     }
+
+
+
+    public class MonoController : MonoBehaviour
+    {
+        // 生命周期方法update中执行的事件
+        private event UnityAction UpdateEvent;
+
+        // 生命周期方法fixedUpdate执行事件
+        private event UnityAction FixedUpdateEvent;
+
+        // 生命周期方法LateUpdate方法
+        private event UnityAction LateUpdateEvent;
+
+        private void Update()
+        {
+            if (UpdateEvent != null)
+            {
+                UpdateEvent?.Invoke();
+            }
+        }
+
+
+        private void FixedUpdate()
+        {
+            if (FixedUpdateEvent != null)
+            {
+                FixedUpdateEvent?.Invoke();
+            }
+        }
+
+        private void LateUpdate()
+        {
+            if (LateUpdateEvent != null)
+            {
+                LateUpdateEvent?.Invoke();
+            }
+        }
+
+
+        /// <summary>
+        /// 添加监听事件
+        /// </summary>
+        /// <param name="call"></param>
+        public void AddUpdateListener(UnityAction call)
+        {
+            UpdateEvent += call;
+        }
+
+        /// <summary>
+        /// 移除临听事件
+        /// </summary>
+        /// <param name="call"></param>
+        public void RemoveUpdateListener(UnityAction call)
+        {
+            UpdateEvent -= call;
+        }
+
+        /// <summary>
+        /// 移除所有监听事件
+        /// </summary>
+        public void RemoveAllListeners()
+        {
+            UpdateEvent = null;
+        }
+
+
+        /// <summary>
+        /// 添加fixedUpdate
+        /// </summary>
+        /// <param name="call"></param>
+        public void AddFixedUpdateListener(UnityAction call)
+        {
+            FixedUpdateEvent += call;
+        }
+
+        /// <summary>
+        /// 移除fixedUpdate
+        /// </summary>
+        /// <param name="call"></param>
+        public void RemoveFixedUpdateListener(UnityAction call)
+        {
+            FixedUpdateEvent -= call;
+        }
+
+        /// <summary>
+        /// 移除所有事件
+        /// </summary>
+        public void RemoveFixUpdateAllListeners()
+        {
+            FixedUpdateEvent = null;
+        }
+
+        public void AddLateUpdateListener(UnityAction call)
+        {
+            LateUpdateEvent += call;
+        }
+
+        public void RemoveLateUpdateListener(UnityAction call)
+        {
+            LateUpdateEvent -= call;
+        }
+
+        public void RemoveLateUpdateAllListeners()
+        {
+            LateUpdateEvent = null;
+        }
+    }
+
 
     /// <summary>
     ///  让外部开鹿协程
@@ -32,7 +142,7 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     /// <returns></returns>
     public Coroutine StartCoroutine(IEnumerator routine)
     {
-        return MonoController.StartCoroutine(routine);
+        return MonoExecutor.StartCoroutine(routine);
     }
 
     /// <summary>
@@ -41,12 +151,12 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     /// <param name="routine"></param>
     public void StopCoroutine(IEnumerator routine)
     {
-        MonoController.StopCoroutine(routine);
+        MonoExecutor.StopCoroutine(routine);
     }
 
     public void StopCoroutine(Coroutine routine)
     {
-        MonoController.StopCoroutine(routine);
+        MonoExecutor.StopCoroutine(routine);
     }
 
 
@@ -55,7 +165,7 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     /// </summary>
     public void StopAllCoroutines()
     {
-        MonoController.StopAllCoroutines();
+        MonoExecutor.StopAllCoroutines();
     }
 
     /// <summary>
@@ -64,7 +174,7 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     /// <param name="call"></param>
     public void AddUpdateListener(UnityAction call)
     {
-        MonoController.AddUpdateListener(call);
+        MonoExecutor.AddUpdateListener(call);
     }
 
     /// <summary>
@@ -73,7 +183,7 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     /// <param name="call"></param>
     public void RemoveUpdateListener(UnityAction call)
     {
-        MonoController.RemoveUpdateListener(call);
+        MonoExecutor.RemoveUpdateListener(call);
     }
 
     /// <summary>
@@ -81,7 +191,7 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     /// </summary>
     public void RemoveAllListeners()
     {
-        MonoController.RemoveAllListeners();
+        MonoExecutor.RemoveAllListeners();
     }
 
     /// <summary>
@@ -90,7 +200,7 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     /// <param name="call"></param>
     public void AddFixedUpdateListener(UnityAction call)
     {
-        MonoController.AddFixedUpdateListener(call);
+        MonoExecutor.AddFixedUpdateListener(call);
     }
 
     /// <summary>
@@ -99,7 +209,7 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     /// <param name="call"></param>
     public void RemoveFixedUpdateListener(UnityAction call)
     {
-        MonoController.RemoveFixedUpdateListener(call);
+        MonoExecutor.RemoveFixedUpdateListener(call);
     }
 
     /// <summary>
@@ -107,6 +217,6 @@ public class MonoManager : SingletonPatternBase<MonoManager>
     /// </summary>
     public void RemoveFixUpdateAllListeners()
     {
-        MonoController.RemoveFixUpdateAllListeners();
+        MonoExecutor.RemoveFixUpdateAllListeners();
     }
 }
